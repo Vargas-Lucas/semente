@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3f6f1;
+  --foreground: #14261c;
+  --muted: #5f7264;
+  --card: rgba(255, 255, 255, 0.72);
+  --border: rgba(20, 38, 28, 0.1);
+  --brand: #1f4d36;
+  --brand-deep: #0f2a1c;
+  --accent: #c6f24d;
+  --accent-ink: #1a2e12;
+  --danger: #b42318;
+  --surface: #e7efe4;
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-manrope);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(198, 242, 77, 0.28), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 95% 5%, rgba(31, 77, 54, 0.18), transparent 50%),
+    linear-gradient(180deg, #eef4ea 0%, #f3f6f1 40%, #e8f0e4 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.site-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: white;
+  box-shadow: 0 10px 24px rgba(31, 77, 54, 0.22);
+}
+
+.btn-primary:hover {
+  background: var(--brand-deep);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.btn-danger {
+  background: color-mix(in srgb, var(--danger) 12%, white);
+  color: var(--danger);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  outline: none;
+  color: var(--foreground);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: color-mix(in srgb, var(--brand) 55%, white);
+  box-shadow: 0 0 0 3px rgba(31, 77, 54, 0.12);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-rise {
+  animation: rise 600ms ease both;
+}
+
+.animate-float {
+  animation: floaty 5s ease-in-out infinite;
+}
